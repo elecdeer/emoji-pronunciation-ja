@@ -1,9 +1,12 @@
 {
   "name": "@elecdeer/emoji-pronunciation-ja",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Data of Japanese pronunciation of Unicode Emoji.",
   "main": "dist/index.js",
-  "files": ["dist", "data"],
+  "files": [
+    "dist",
+    "data"
+  ],
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
