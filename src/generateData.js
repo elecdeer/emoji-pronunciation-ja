@@ -1,6 +1,7 @@
-const fetch = require("node-fetch");
-const convert = require("xml-js");
-const fs = require("fs").promises;
+import fetch from "node-fetch";
+import convert from "xml-js";
+import { promises as fs } from 'fs'
+
 
 const downloadAnnotationXml = async () => {
   return fetch("https://raw.githubusercontent.com/unicode-org/cldr/master/common/annotations/ja.xml")
