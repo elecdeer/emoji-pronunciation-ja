@@ -1,13 +1,18 @@
 
 // @ts-ignore
-import rawData from "./data/pronunciation.json";
+import rawData from "../data/pronunciation.json";
+
+const escapeCharacters = ["\\", "*", "+", ".", "?", "{", "}", "(", ")", "[", "]", "^", "$", "-", "|", "/"]
 
 
 export const data: Readonly<Record<string, string | undefined>> = rawData;
 
 const getRegexPattern = () => {
-  const keys = Object.keys(data).join("|");
-  return `(${keys})`;
+  const keys = Object.keys(data)
+    .filter(char => !!char)
+    .map(char => escapeCharacters.includes(char) ? "\\"+char : char)
+    .join("|");
+  return "(" + keys + ")";
 }
 
 export const emojiRegexPattern: Readonly<string> = getRegexPattern();
@@ -16,7 +21,7 @@ export const emojiRegexPattern: Readonly<string> = getRegexPattern();
  * 絵文字にマッチする正規表現オブジェクトを新しく生成し返す
  * @param flags
  */
-export const getEmojiRegExp = (flags: string = "gu"): RegExp => {
+export const getEmojiRegExp = (flags: string = ""): RegExp => {
   return new RegExp(emojiRegexPattern, flags);
 }
 

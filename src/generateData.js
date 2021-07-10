@@ -1,6 +1,6 @@
-import fetch from "node-fetch";
-import convert from "xml-js";
-import { promises as fs } from 'fs'
+const fetch = require("node-fetch");
+const convert = require("xml-js");
+const fs = require("fs").promises;
 
 
 const downloadAnnotationXml = async () => {
